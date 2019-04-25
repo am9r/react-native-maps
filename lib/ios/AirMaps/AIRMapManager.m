@@ -781,7 +781,7 @@ RCT_EXPORT_METHOD(coordinateForPoint:(nonnull NSNumber *)reactTag
     if ([view.annotation isKindOfClass:[AIRMapMarker class]]) {
       //  [(AIRMapMarker *)view.annotation showCalloutView];
     } else if ([view.annotation isKindOfClass:[MKUserLocation class]] && mapView.userLocationAnnotationTitle != nil && view.annotation.title != mapView.userLocationAnnotationTitle) {
-        [(MKUserLocation*)view.annotation setTitle: mapView.userLocationAnnotationTitle];
+       // [(MKUserLocation*)view.annotation setTitle: mapView.userLocationAnnotationTitle];
     }
 
 }
