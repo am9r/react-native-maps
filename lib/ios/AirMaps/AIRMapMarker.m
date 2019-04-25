@@ -15,7 +15,7 @@
 #import <React/RCTUtils.h>
 #import <React/UIView+React.h>
 
-NSInteger const AIR_CALLOUT_OPEN_ZINDEX_BASELINE = 999;
+NSInteger const AIR_CALLOUT_OPEN_ZINDEX_BASELINE = 99999;
 
 @implementation AIREmptyCalloutBackgroundView
 @end
@@ -150,7 +150,7 @@ NSInteger const AIR_CALLOUT_OPEN_ZINDEX_BASELINE = 999;
 - (void)showCalloutView
 {
     _calloutIsOpen = YES;
-    [self setZIndex:_zIndexBeforeOpen];
+    [self setZIndex:AIR_CALLOUT_OPEN_ZINDEX_BASELINE];
     
     MKAnnotationView *annotationView = [self getAnnotationView];
 
@@ -238,7 +238,7 @@ NSInteger const AIR_CALLOUT_OPEN_ZINDEX_BASELINE = 999;
 - (void)hideCalloutView
 {
     _calloutIsOpen = NO;
-    [self setZIndex:_zIndexBeforeOpen];
+    [self setZIndex:AIR_CALLOUT_OPEN_ZINDEX_BASELINE];
     // hide the callout view
     [self.map.calloutView dismissCalloutAnimated:YES];
 
@@ -317,7 +317,7 @@ NSInteger const AIR_CALLOUT_OPEN_ZINDEX_BASELINE = 999;
 {
     _zIndexBeforeOpen = zIndex;
     _zIndex = _calloutIsOpen ? zIndex + AIR_CALLOUT_OPEN_ZINDEX_BASELINE : zIndex;
-    self.layer.zPosition = zIndex;
+    self.layer.zPosition = AIR_CALLOUT_OPEN_ZINDEX_BASELINE;
 }
 
 - (void)dealloc {
@@ -326,7 +326,7 @@ NSInteger const AIR_CALLOUT_OPEN_ZINDEX_BASELINE = 999;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"zPosition"]) {
-        self.layer.zPosition = _zIndex;
+        self.layer.zPosition = AIR_CALLOUT_OPEN_ZINDEX_BASELINE;
     }
 }
 
